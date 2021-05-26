@@ -1,0 +1,2 @@
+# Projekt-zespolowy
+ Forex-predictor
