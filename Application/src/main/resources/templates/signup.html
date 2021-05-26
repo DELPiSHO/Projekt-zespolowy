@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<link th:href="@{/css/home.css}" rel="stylesheet" type="text/css"/>
+<link th:href="@{/css/navbar.css}" rel="stylesheet" type="text/css"/>
+<link th:href="@{/css/mainlayout.css}" rel="stylesheet" type="text/css"/>
+<head>
+    <title>Spring Security Example </title>
+
+    <script>
+        /* Set the width of the side navigation to 250px */
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "200px";
+            document.getElementById("spanner").style.width = 0;
+
+        }
+
+        /* Set the width of the side navigation to 0 */
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("spanner").style.width = "50px"
+        }
+    </script>
+    <style th:inline="text">
+        body {
+            background: url([[@{/graphic/background.jpg}]]);
+            background-size: cover;
+        }
+
+    </style>
+
+</head>
+<body>
+<div>
+    <div id="mySidenav" class="sidenav" onmouseleave="closeNav()">
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+        <a href="/signup">Register</a>
+    </div>
+    <div id="spanner" class="menu" onmouseover="openNav()">
+
+        <p>M</p>
+        <p>E</p>
+        <p>N</p>
+        <p>U</p>
+    </div>
+    <div class="center-container">
+        <div class="invalid" th:if="${param.error}">
+            <a class="text-class">Zły login lub hasło.</a>
+        </div>
+        <div class="logout" th:if="${param.logout}">
+            <a class="text-class">Zostałeś wylogowany.</a>
+        </div>
+        <div class="form-style">
+            <form class="form-signin" th:action="@{/signup}" method="post">
+                <h1 class="h3 mb-3 font-weight-normal">Register Here</h1>
+                <div th:if="${param.error}">
+                    Invalid email and password.
+                </div>
+                <div th:if="${param.logout}">
+                    You have been logged out.
+                </div>
+                <div class="registerLabel">
+                    <label for="inputEmail" class="sr-only pad">Email</label>
+                    <input type="email" name="email" id="inputEmail" class="form-control form-input" placeholder="Email" required="" />
+                </div>
+                </br>
+                <div class="registerLabel">
+                    <label for="inputPassword" class="sr-only pad">Password</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control form-input" placeholder="Password" required="" />
+                </div>
+                </br>
+                <div class="registerLabel">
+                    <label for="inputFullname" class="sr-only pad">Full Name</label>
+                    <input type="text" name="fullname" id="inputFullname" class="form-control form-input" placeholder="Fullname" required="" />
+                </div>
+                </br>
+                <div class="registerLabel">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Spring Security Example</title>
+    <link th:href="@{/css/navbar.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/mainlayout.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/home.css}" rel="stylesheet" type="text/css"/>
+    <style th:inline="text">
+        body {
+            background: url([[@{/graphic/background.jpg}]]);
+            background-size: cover;
+        }
+
+    </style>
+    <script>
+        /* Set the width of the side navigation to 250px */
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "200px";
+            document.getElementById("spanner").style.width = 0;
+
+        }
+
+        /* Set the width of the side navigation to 0 */
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("spanner").style.width = "50px"
+        }
+    </script>
+</head>
+<body>
+
+<div class="bg">
+    <div id="mySidenav" class="sidenav" onmouseleave="closeNav()">
+        <a href="/admin">Home</a>
+        <a href="/logout">Login</a>
+    </div>
+    <div id="spanner" class="menu" onmouseover="openNav()">
+
+        <p>M</p>
+        <p>E</p>
+        <p>N</p>
+        <p>U</p>
+    </div>
+    <div class="center-container">
+        <div class="welcome-container">
+            <a href="/admin/update">UPDATE</a>
+            <a href="/admin/fix">FIX</a>
+            <a href="/admin/setup">SETUP</a>
+            <a href="/admin/ml">MACHING LEARNING</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

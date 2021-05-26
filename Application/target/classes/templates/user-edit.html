@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Account Edit</title>
+    <link th:href="@{/css/navbar.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/mainlayout.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/home.css}" rel="stylesheet" type="text/css"/>
+    <style th:inline="text">
+        body {
+            background: url([[@{/graphic/background.jpg}]]);
+            background-size: cover;
+        }
+
+    </style>
+    <script>
+        /* Set the width of the side navigation to 250px */
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "200px";
+            document.getElementById("spanner").style.width = 0;
+
+        }
+
+        /* Set the width of the side navigation to 0 */
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("spanner").style.width = "50px"
+        }
+    </script>
+</head>
+<body>
+
+<div class="bg">
+    <div id="mySidenav" class="sidenav" onmouseleave="closeNav()">
+        <a href="/user-home">Home</a>
+        <a href="/user-info">Account</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div id="spanner" class="menu" onmouseover="openNav()">
+
+        <p>M</p>
+        <p>E</p>
+        <p>N</p>
+        <p>U</p>
+    </div>
+    <div class="center-container">
+        <img th:src="@{/graphic/logo.png}" align="center">
+            <div class="form-style">
+            <form class="form-signin" th:action="@{/edit-account}" th:object="${user}" method="post">
+                <h1 class="h3 mb-3 font-weight-normal">Edit Account</h1>
+                <div th:if="${param.error}">
+                    Invalid email and password.
+                </div>
+                <div th:if="${param.logout}">
+                    You have been logged out.
+                </div>
+                <input type="hidden" name="id" id="id" class = "form-control" th:field="${user.id}" placeholder="id" required=""/>
+                <label for="inputEmail" class="sr-only">Email</label>
+                <input type="email" name="email" id="inputEmail" class="form-control" th:field="${user.email}" placeholder="Email" required="" />
+                </br>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required="" />
+                </br>
+                <label for="inputFullname" class="sr-only">Full Name</label>
+                <input type="text" name="fullname" id="inputFullname" class="form-control" th:field="${user.fullname}" placeholder="Full Name" required="" />
+                </br>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Edit</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
+
+
