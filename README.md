@@ -1,5 +1,6 @@
-#Forex Predictor
-#A Forex prediction application
+Forex Predictor
+
+A Forex prediction application
 
 Projekt zespołowy - sp. Aplikacje internetowe, grupa 1
 Dariusz Burczynski
